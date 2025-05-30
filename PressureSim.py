@@ -12,6 +12,7 @@ temperature = np.zeros_like(theta, dtype=float) # Kelvins
 Volume = np.zeros_like(theta, dtype=float)           
 Moles = np.zeros_like(theta, dtype=float)
 Pressure = np.zeros_like(theta, dtype=float)
+Force = np.zeros_like(theta, dtype=float)
 
 # Loop through each degree
 for i in range(len(theta)):
@@ -38,11 +39,12 @@ for i in range(len(theta)):
     else:                                # Exhaust stroke       
         slope = (30000 - pEnd) / 180
         Pressure[i] = pEnd + slope * (x_local)
-
+    
+    Force[i] = Pressure[i] * 4.5e-3
 # Plotting
 plt.figure(figsize=(12, 6))
 plt.plot(theta, Pressure / 1e3, 'r-', linewidth=2, label='Pressure (kPa)')
-plt.plot(theta, (Pressure * 4.5e-3), 'k-', linewidth=2, label='Force (N)')
+plt.plot(theta, Force, 'k-', linewidth=2, label='Force (N)')
 plt.plot(theta, Volume, 'b-', linewidth=2, label='Volume (m^3)')
 plt.plot(theta, temperature, 'g-', linewidth=2, label='Temperature (K)')
 plt.xlabel('Crank Angle (degrees)')
