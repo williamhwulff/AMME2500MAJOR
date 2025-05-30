@@ -41,9 +41,10 @@ for i in range(len(theta)):
 
 # Plotting
 plt.figure(figsize=(12, 6))
-plt.plot(theta, Pressure, 'r-', linewidth=2, label='p2 (Pressure)')
-plt.plot(theta, Volume * 1e10, 'b-', linewidth=2, label='v2 (Volume)')
-plt.plot(theta, temperature, 'g-', linewidth=2, label='y (Force)')
+plt.plot(theta, Pressure / 1e3, 'r-', linewidth=2, label='Pressure (kPa)')
+plt.plot(theta, (Pressure * 4.5e-3), 'k-', linewidth=2, label='Force (N)')
+plt.plot(theta, Volume, 'b-', linewidth=2, label='Volume (m^3)')
+plt.plot(theta, temperature, 'g-', linewidth=2, label='Temperature (K)')
 plt.xlabel('Crank Angle (degrees)')
 plt.ylabel('Value')
 plt.title('Engine Cycle Function Over Crank Angle')
