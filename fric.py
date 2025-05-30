@@ -9,16 +9,6 @@ def viscous_friction_crank(N):
     # Calculate viscous force
     force = torque / R
     return force
-def viscous_friction_piston(N):
-    eta = 0.25     # Pa·s (motor oil) 
-    L = 0.08       # Length of crank
-    R = 0.02       # Radius of crank 
-    d = 0.030      # thickness of oil film (m)
-    # Calculate viscous torque
-    torque = (4 * math.pi**2 * eta * L * R**3 * N) / d
-    # Calculate viscous force
-    force = torque / R
-    return force
 
 def viscous_friction_piston(v):
     eta = 0.25      # Pa·s
